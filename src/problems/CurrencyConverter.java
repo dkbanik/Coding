@@ -31,8 +31,8 @@ public class CurrencyConverter {
     private static void printCurrencyTreeWithCost(CurrencyNode baseCurrency) {
         if(baseCurrency == null)return;
         System.out.println(baseCurrency.getName()+"--->"+baseCurrency.getCost());
-        for(int i=0;i< baseCurrency.getChildren().size();i++){
-            printCurrencyTreeWithCost(baseCurrency.getChildren().get(i));
+        for(CurrencyNode child : baseCurrency.getChildren()){
+            printCurrencyTreeWithCost(child);
         }
     }
 
@@ -40,8 +40,8 @@ public class CurrencyConverter {
         if(baseCurrency == null)return;
         baseCurrency.setCost(baseCurrency.getParent().getCost()*baseCurrency.getCost());
         currencyMapper.put(baseCurrency.getName(), baseCurrency.getCost());
-        for(int i=0;i<baseCurrency.getChildren().size();i++){
-            updateCurrencyCost(baseCurrency.getChildren().get(i));
+        for(CurrencyNode child : baseCurrency.getChildren()){
+            updateCurrencyCost(child);
         }
     }
 
