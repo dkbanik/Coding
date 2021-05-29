@@ -12,6 +12,10 @@ public class LinkedListNode {
         return next;
     }
 
+    public void setNext(LinkedListNode next) {
+        this.next = next;
+    }
+
     public int getData() {
         return data;
     }

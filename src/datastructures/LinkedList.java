@@ -1,11 +1,23 @@
 package datastructures;
 
 public class LinkedList {
-    LinkedListNode node;
-    public LinkedList(){ node = null;}
+    LinkedListNode head;
+    public LinkedList(){ head = null;}
+
+    public LinkedListNode getHead(){return head;}
+
+    public LinkedList(int[] list){
+        head = new LinkedListNode(list[0]);
+        LinkedListNode current = head;
+        for(int i=1;i<list.length;i++){
+            current.next = new LinkedListNode(list[i]);
+            current = current.next;
+        }
+        current.next=null;
+    }
 
     public LinkedListNode defaultLinkedList(int size){
-        LinkedListNode head = new LinkedListNode(1);
+        head = new LinkedListNode(1);
         LinkedListNode current = head;
         for(int i=2;i<=size;i++){
             current.next = new LinkedListNode(i);
