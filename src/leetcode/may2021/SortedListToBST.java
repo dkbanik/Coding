@@ -8,7 +8,7 @@ import datastructures.Tree;
 public class SortedListToBST {
     public static void main(String[] args) {
         int[] arr = {-10,-3,0,5,9};
-        LinkedList list = new LinkedList(arr);
+        LinkedList<Number> list = new LinkedList<Number>(arr);
         LinkedListNode head = list.getHead();
         System.out.println(head.getData());
         Node root = sortedListToBST(head);

@@ -1,6 +1,6 @@
 package datastructures;
 
-public class LinkedList {
+public class LinkedList<I extends Number> {
     LinkedListNode head;
     public LinkedList(){ head = null;}
 
