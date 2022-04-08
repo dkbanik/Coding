@@ -5,12 +5,12 @@ public class PrintJob {
 
         System.out.println("Application Started");
         Printer p = new Printer();
-        Runnable firstJob = new FirstThread(p, "First Thread");
-        Thread firstThread =  new Thread(firstJob);
+        Runnable firstWorker = new FirstWorker(p, "First Thread");
+        Thread firstThread =  new Thread(firstWorker);
 
 
-        Runnable secondJob = new SecondThread(p, "Second Thread");
-        Thread secondThread = new Thread(secondJob);
+        Runnable secondWorker = new SecondWorker(p, "Second Thread");
+        Thread secondThread = new Thread(secondWorker);
 
         firstThread.start();
         secondThread.start();
