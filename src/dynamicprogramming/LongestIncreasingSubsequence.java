@@ -1,12 +1,31 @@
-package topinterviewmedium;
+package dynamicprogramming;
 
 import java.util.Arrays;
+import java.util.OptionalInt;
 
-//https://www.youtube.com/watch?v=1qD1FLhKrIE
+//https://www.youtube.com/watch?v=qEh5uA8sx8w&list=PLDdcY4olLQk3Z2Gyo3-VN8gvi7DRKK-YY&index=23
 public class LongestIncreasingSubsequence {
     public static void main(String[] args) {
-        int[] nums = {10,9,2,5,3,7,101,18};
-        System.out.println(lengthOfLIS(nums));
+        int[] arr = {0,8,4,12,2,10,6,14,1,9,5,13,3,11,7,15};
+        int length = arr.length;
+        lis(arr);
+    }
+
+    public static void lis(int[] arr){
+        int length = arr.length;
+        int[] cache = new int[length];
+        // be default all numbers will be of atleast 1 length
+        Arrays.fill(cache,1);
+
+        for (int i=1;i<length;i++){
+            for (int j=0;j<i;j++){
+                if(arr[i] > arr[j]){
+                    cache[i] = Math.max(cache[i],1+cache[j]);
+                }
+            }
+        }
+        int ans = Arrays.stream(cache).max().getAsInt();
+        System.out.println(ans);
     }
 
     public static int lengthOfLIS(int[] nums) {
@@ -43,25 +62,5 @@ public class LongestIncreasingSubsequence {
             }
         }
         return low;
-    }
-
-
-    public static int lengthOfLISV2(int[] nums){
-        int[] cache = new int[nums.length];
-        int len = cache.length;
-        Arrays.fill(cache,1);
-        for(int j=nums.length-1;j>=0;j--){
-            for(int i=j+1;i<len;i++){
-                if(nums[j]<nums[i]){
-                    cache[j] = Math.max(cache[j],1+cache[i]);
-                }
-            }
-        }
-
-        int max = Integer.MIN_VALUE;
-        for(int i=0;i<cache.length;i++){
-            max = Integer.max(max, cache[i]);
-        }
-        return max;
     }
 }

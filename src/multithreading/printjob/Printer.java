@@ -1,4 +1,4 @@
-package multithreading;
+package multithreading.printjob;
 
 public class Printer {
     synchronized public void printDocuments(int num, String name){

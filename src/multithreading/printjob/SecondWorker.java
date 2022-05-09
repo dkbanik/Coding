@@ -1,4 +1,4 @@
-package multithreading;
+package multithreading.printjob;
 
 public class SecondWorker extends ThreadJob implements Runnable{
 

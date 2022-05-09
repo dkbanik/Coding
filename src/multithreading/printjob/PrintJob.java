@@ -1,4 +1,4 @@
-package multithreading;
+package multithreading.printjob;
 
 public class PrintJob {
     public static void main(String[] args) {
