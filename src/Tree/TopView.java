@@ -16,13 +16,17 @@ public class TopView {
 
     public static void topView(Node root){
         if(root == null) return;
+        int lowerBound = 0;
+        int upperBound = 0;
         Queue<VerticaLNode> queue = new LinkedList<>();
         queue.add(new VerticaLNode(root, 0));
-        Map<Integer, Node> map = new TreeMap<>();
+        Map<Integer, Node> map = new HashMap<>();
         while (!queue.isEmpty()){
             VerticaLNode temp = queue.poll();
             if(!map.containsKey(temp.horizontalDist)){
                 map.put(temp.horizontalDist, temp.node);
+                if(temp.horizontalDist > upperBound) upperBound = temp.horizontalDist;
+                if(temp.horizontalDist < lowerBound) lowerBound = temp.horizontalDist;
             }
             if(temp.node.left != null){
                 queue.add(new VerticaLNode(temp.node.left,temp.horizontalDist-1));
@@ -32,9 +36,15 @@ public class TopView {
             }
         }
 
-        for(Map.Entry<Integer, Node> entry : map.entrySet()){
-            System.out.print(entry.getValue().val+" ");
+        for(int i=lowerBound;i<=upperBound;i++){
+            if(map.containsKey(i)){
+                System.out.print(map.get(i).val+" ");
+            }
         }
+
+//        for(Map.Entry<Integer, Node> entry : map.entrySet()){
+//            System.out.print(entry.getValue().val+" ");
+//        }
 
     }
 }

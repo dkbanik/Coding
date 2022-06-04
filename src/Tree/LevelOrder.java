@@ -17,7 +17,7 @@ public class LevelOrder {
     public static void levelOrder(Node root){
         Queue<VerticaLNode> queue = new LinkedList<>();
         if(root == null)return;
-        Map<Integer, List<Node>> map = new TreeMap<>();
+        Map<Integer, List<Node>> map = new HashMap<>();
 
         queue.add(new VerticaLNode(root,0));
         while (!queue.isEmpty()){

@@ -2,7 +2,7 @@ package topinterviewmedium;
 
 public class LongestPalindromeSubstring {
     public static void main(String[] args) {
-        System.out.println(longestPalindrome("aaaaa"));
+        System.out.println(longestPalindrome("abbaa"));
     }
 
     public static void printMatrix(int[][] mat){

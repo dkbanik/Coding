@@ -8,7 +8,8 @@ public class PathSum {
     public static void main(String[] args) {
         Tree tree = new Tree();
         Node root = tree.defaultTree();
-        boolean ans = hasPathSum(root, 5);
+        boolean ans = pathSumV2(root, 5);
+        System.out.println(pathSumV2(root,13));
     }
 
     public static boolean hasPathSum(Node root, int targetSum) {
@@ -27,6 +28,21 @@ public class PathSum {
             }
             return hasPath;
         }
+    }
+
+    public static boolean pathSumV2(Node root, int target){
+        if(root == null){
+            return target == 0;
+        }
+        //if(root.getLeft()==null && root.getRight()==null && root.getData() == target)return true;
+        boolean left = pathSumV2(root.getLeft(), target-root.getData());
+        boolean right = pathSumV2(root.getRight(), target- root.getData());
+
+        if(left || right){
+            return true;
+        }
+        return false;
+
     }
 
 

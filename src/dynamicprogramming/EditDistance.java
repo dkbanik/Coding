@@ -4,8 +4,8 @@ import java.util.Arrays;
 
 public class EditDistance {
     public static void main(String[] args) {
-        String s = "geeks";
-        String t = "geske";
+        String s = "horse";
+        String t = "ros";
 
         System.out.println(editDistance(s,t));
     }

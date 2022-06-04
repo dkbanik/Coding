@@ -9,7 +9,7 @@ public class LowestCommonAncestor {
         Tree tree = new Tree();
         Node head = tree.randomTree();
 
-        Node ans = findLCA(head,2,6);
+        Node ans = findLCA(head,2,7);
         System.out.println(ans.getData());
     }
 
