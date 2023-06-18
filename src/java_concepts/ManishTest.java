@@ -13,6 +13,7 @@ final public class ManishTest{
         this.address = address;
     }
 
+
     public int getAge() {
         return age;
     }
@@ -21,11 +22,12 @@ final public class ManishTest{
         return dob;
     }
 
-    public Address getAddress() {
-        return new Address(address.getAddress(),address.getStreet());
+    public Address getAddress() throws CloneNotSupportedException {
+        return (Address) address.clone();
+        //return new Address(address.getAddress(),address.getStreet());
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws CloneNotSupportedException{
         Address address = new Address("silchar", 12);
         ManishTest m1 = new ManishTest(12, new Date(), address);
         Address a1 = m1.getAddress();
@@ -33,13 +35,18 @@ final public class ManishTest{
         System.out.println(m1.getAddress().getAddress());
     }
 }
-class Address{
+class Address implements Cloneable{
     String address;
     int street;
 
     public Address(String address, int street) {
         this.address = address;
         this.street = street;
+    }
+
+    public Object clone() throws CloneNotSupportedException
+    {
+        return super.clone();
     }
 
     public String getAddress() {

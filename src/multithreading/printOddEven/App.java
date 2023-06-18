@@ -8,6 +8,13 @@ public class App {
 
         Thread t2 = new Thread(() -> obj.printOdd(), "ThreadOdd");
 
+//        Thread t3 = new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                obj.printOdd();
+//            }
+//        }, "thread3");
+
         t1.start();
         t2.start();
     }

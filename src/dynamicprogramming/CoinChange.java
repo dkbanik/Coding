@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class CoinChange {
     public static void main(String[] args) {
-        int[] coins = {2,5};
+        int[] coins = {1,2,5};
         int amount = 7;
         //System.out.println(Math.abs(1+Integer.MAX_VALUE));
         System.out.print(coinChange(coins,amount));
