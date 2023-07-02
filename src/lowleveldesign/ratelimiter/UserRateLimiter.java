@@ -5,14 +5,14 @@ import java.util.Map;
 
 public class UserRateLimiter {
 
-    Map<Integer, SlidingWindowRateLimiter> userRateLimitMap;
+    Map<Integer, RateLimiter> userRateLimitMap;
 
-    public UserRateLimiter(int id) {
+    public UserRateLimiter(int id, RateLimiter rateLimiter) {
         this.userRateLimitMap = new HashMap<>();
-        userRateLimitMap.put(id, new SlidingWindowRateLimiter(1,10));
+        userRateLimitMap.put(id, rateLimiter);
     }
 
-    void accessApplication(int id){
+    synchronized void accessApplication(int id){
         if(userRateLimitMap.get(id).grantAccess()){
             System.out.println(Thread.currentThread().getName()+" has access");
         }
