@@ -2,12 +2,12 @@ package java_concepts;
 
 import java.util.Date;
 
-final public class ManishTest{
+final public class ImmutableClass{
     final private int age;
     final private Date dob;
     final private Address address;
 
-    public ManishTest(int age, Date dob, Address address) {
+    public ImmutableClass(int age, Date dob, Address address) {
         this.age = age;
         this.dob = dob;
         this.address = address;
@@ -29,7 +29,7 @@ final public class ManishTest{
 
     public static void main(String[] args) throws CloneNotSupportedException{
         Address address = new Address("silchar", 12);
-        ManishTest m1 = new ManishTest(12, new Date(), address);
+        ImmutableClass m1 = new ImmutableClass(12, new Date(), address);
         Address a1 = m1.getAddress();
         a1.setAddress("bangalore");
         System.out.println(m1.getAddress().getAddress());
