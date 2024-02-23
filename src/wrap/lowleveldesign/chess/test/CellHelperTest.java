@@ -10,6 +10,9 @@ public class CellHelperTest {
 
         int[] xy = CellHelper.getChessCellCoordinate(ans);
         System.out.println(xy[0]+" "+xy[1]);
+
+        int[] yz = CellHelper.getChessCellCoordinate("e4");
+        System.out.println(yz[0]+" "+yz[1]);
     }
 
 }

@@ -15,4 +15,9 @@ public abstract class Piece {
     }
 
     public abstract boolean canMove(Board board, Cell from, Cell to);
+
+    @Override
+    public String toString() {
+        return "";
+    }
 }

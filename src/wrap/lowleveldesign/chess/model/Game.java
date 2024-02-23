@@ -29,6 +29,7 @@ public class Game {
         Move move = new Move(currentPlayer, "e2", "e4", board.getCellbyName("e2").piece);
         // check if the move is valid
         boolean isValidMove = move.isValid(board);
+        System.out.println("move is valid: "+isValidMove);
     }
 
 }
