@@ -1,6 +1,4 @@
 package wrap.lowleveldesign.chess.model.piece;
-
-
 import wrap.lowleveldesign.chess.model.Board;
 import wrap.lowleveldesign.chess.model.Cell;
 import wrap.lowleveldesign.chess.model.Color;
@@ -17,32 +15,31 @@ public class Pawn extends Piece {
         *   2. other move only 1 cell vertical
         *   3. move diagonal 1 cell if piece is of opposite color
         * */
-
-        int fromRow = from.getRow();
-        int fromCol = from.getCol();
-        int toRow = to.getRow();
-        int toCol = to.getCol();
+        int fromX = from.getX();
+        int fromY = from.getY();
+        int toX = to.getX();
+        int toY = to.getY();
 
         // Determine direction based on the piece's color
-        int direction = (this.color == Color.WHITE) ? -1 : 1;
+        int direction = (this.getColor() == Color.WHITE) ? -1 : 1;
 
         // Check if the move is 1 cell vertical
-        if (fromCol == toCol && fromRow + direction == toRow) {
+        if (fromX == toX && fromY + direction == toY) {
             // Check if the 'to' cell is empty
-            return board.isEmptyCell(toRow, toCol);
+            return board.isEmptyCell(toX, toY);
         }
 
         // Check if the move is 2 cells vertical for the first move
-        if (fromCol == toCol && fromRow + 2 * direction == toRow && isFirstMove(fromRow, this.color)) {
+        if (fromX == toX && fromY + 2 * direction == toY && isFirstMove(fromY, this.getColor())) {
             // Check if the intermediate cell is empty and the 'to' cell is empty
-            return board.isEmptyCell(fromRow + direction, fromCol) && board.isEmptyCell(toRow, toCol);
+            return board.isEmptyCell(fromX,  fromY + direction ) && board.isEmptyCell(toX, toY);
         }
 
         // Check if the move is diagonal
-        if (Math.abs(toCol - fromCol) == 1 && fromRow + direction == toRow) {
+        if (Math.abs(toX - fromX) == 1 && fromY + direction == toY) {
             // Check if the 'to' cell contains a piece of the opposite color
-            Piece toPiece = board.getCell(toRow, toCol).piece;
-            return toPiece != null && toPiece.color != this.color;
+            Piece toPiece = board.getCell(toX, toY).getPiece();
+            return toPiece != null && toPiece.getColor() != this.getColor();
         }
 
         return false;
@@ -52,7 +49,7 @@ public class Pawn extends Piece {
         return "P";
     }
 
-    private boolean isFirstMove(int row, Color color) {
-        return (color == Color.WHITE && row == 6) || (color == Color.BLACK && row == 1);
+    private boolean isFirstMove(int y, Color color) {
+        return (color == Color.WHITE && y == 6) || (color == Color.BLACK && y == 1);
     }
 }

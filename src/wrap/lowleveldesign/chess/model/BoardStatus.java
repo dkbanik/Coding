@@ -1,7 +1,8 @@
 package wrap.lowleveldesign.chess.model;
 
-public enum GameStatus {
+public enum BoardStatus {
     WHITE_WIN,
     BLACK_WIN,
-    TIE
+    TIE,
+    IN_PLAY
 }

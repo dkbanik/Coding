@@ -1,7 +1,5 @@
 package wrap.lowleveldesign.chess.model;
 
-
-
 import wrap.lowleveldesign.chess.helper.CellHelper;
 import wrap.lowleveldesign.chess.model.piece.Bishop;
 import wrap.lowleveldesign.chess.model.piece.King;
@@ -11,17 +9,18 @@ import wrap.lowleveldesign.chess.model.piece.Piece;
 import wrap.lowleveldesign.chess.model.piece.Queen;
 import wrap.lowleveldesign.chess.model.piece.Rook;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class Board {
-    Cell[][] cells;
-    Map<String, Cell> cellName = new HashMap<>();
-
-    Board(){
+    private Cell[][] cells;
+    private BoardStatus boardStatus;
+    public Board(){
         cells = new Cell[8][8];
         this.setBoard();
+        this.boardStatus = BoardStatus.IN_PLAY;
     }
+    public void setBoardStatus(BoardStatus boardStatus) {
+        this.boardStatus = boardStatus;
+    }
+
     public void setBoard(){
         for(int x =0;x<8;x++){
             for(int y=0;y<8;y++){
@@ -52,6 +51,9 @@ public class Board {
             cells[x][6] = new Cell(x,6, new Pawn(Color.WHITE));
         }
     }
+    public BoardStatus getBoardStatus() {
+        return boardStatus;
+    }
 
     public Cell getCell(int x, int y){
         if(x > 7 || x < 0 || y > 7 || y < 0) return null;
@@ -63,47 +65,24 @@ public class Board {
     }
 
     public boolean isEmptyCell(int x, int y){
-        return cells[x][y].piece == null ;
-    }
-
-    public Cell moveRight(Cell currentCell){
-        return getCell(currentCell.x+1, currentCell.y);
-    }
-    public Cell moveLeft(Cell currentCell){
-        return getCell(currentCell.x-1, currentCell.y);
-    }
-    public Cell moveUp(Cell currentCell){
-        return getCell(currentCell.x, currentCell.y+1);
-    }
-    public Cell moveDown(Cell currentCell){
-        return getCell(currentCell.x, currentCell.y-1);
-    }
-    public Cell moveTopRight(Cell currentCell){
-        return getCell(currentCell.x+1, currentCell.y+1);
-    }
-    public Cell moveTopLeft(Cell currentCell){
-        return getCell(currentCell.x-1, currentCell.y+1);
-    }
-    public Cell moveBottomRight(Cell currentCell){
-        return getCell(currentCell.x+1, currentCell.y-1);
-    }
-    public Cell moveBottomLeft(Cell currentCell){
-        return getCell(currentCell.x-1, currentCell.y-1);
+        return cells[x][y].getPiece() == null ;
     }
     public void displayBoard(){
-        System.out.println("------------------------------");
+        System.out.println("-----------------------------------------");
         for (int i=0;i<8;i++){
+            System.out.print("| ");
             for(int j=0;j<8;j++){
                 if (getCell(j, i) != null){
-                    Piece pieceName = getCell(j, i).piece;
-                    if(pieceName != null)System.out.print(getCell(j, i).piece + " | ");
+                    Piece pieceName = getCell(j, i).getPiece();
+                    if(pieceName != null)System.out.print(getCell(j, i).getPiece() + "  | ");
+                    else System.out.print("   | ");
                 }
                 else {
-                    System.out.print("  | ");
+                    System.out.print("   | ");
                 }
             }
             System.out.println();
-            System.out.println("------------------------------");
+            System.out.println("-----------------------------------------");
         }
     }
 }

@@ -1,6 +1,7 @@
 package wrap.lowleveldesign.chess.model.piece;
 
 
+import wrap.lowleveldesign.chess.helper.PieceUtils;
 import wrap.lowleveldesign.chess.model.Board;
 import wrap.lowleveldesign.chess.model.Cell;
 import wrap.lowleveldesign.chess.model.Color;
@@ -12,7 +13,11 @@ public class Bishop extends Piece{
 
     @Override
     public boolean canMove(Board board, Cell from, Cell to) {
-        return false;
+        /*
+        *  Only move diagonal
+        *
+        * */
+        return PieceUtils.canMoveDiagonal(board, from, to);
     }
 
     @Override

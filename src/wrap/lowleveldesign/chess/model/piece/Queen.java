@@ -1,6 +1,7 @@
 package wrap.lowleveldesign.chess.model.piece;
 
 
+import wrap.lowleveldesign.chess.helper.PieceUtils;
 import wrap.lowleveldesign.chess.model.Board;
 import wrap.lowleveldesign.chess.model.Cell;
 import wrap.lowleveldesign.chess.model.Color;
@@ -13,7 +14,16 @@ public class Queen extends Piece{
 
     @Override
     public boolean canMove(Board board, Cell from, Cell to) {
-        return false;
+        /*
+        *   1. check if horizontal
+        *   2. check if vertical
+        *   3. check if diagonal
+        *
+        * */
+        return PieceUtils.canMoveHorizontal(board,from,to) ||
+                PieceUtils.canMoveVertical(board, from, to) ||
+                PieceUtils.canMoveDiagonal(board, from, to);
+
     }
 
     @Override

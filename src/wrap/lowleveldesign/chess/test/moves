@@ -1,0 +1,18 @@
+ // create a move which takes from & to and which piece to move
+        //Move move = new Move(currentPlayer, "e2", "e4", board.getCellbyName("e2").piece);
+        //Move move = new Move(currentPlayer, "g1", "e2", board.getCellbyName("g1").piece);
+
+        //for rook
+        //board.getCellbyName("a2").piece = null;
+        //Move move = new Move(currentPlayer, "a1", "a7", board.getCellbyName("a1").piece);
+
+        //for bishop
+        //board.getCellbyName("e2").piece = null;
+        //Move move = new Move(currentPlayer, "f1", "a6", board.getCellbyName("f1").piece);
+
+        //for queen
+        //board.getCellbyName("d2").piece = null;
+        //Move move = new Move(currentPlayer, "d1", "d7", board.getCellbyName("d1").piece);
+
+        //for king
+        //board.getCellbyName("e2").piece = null;

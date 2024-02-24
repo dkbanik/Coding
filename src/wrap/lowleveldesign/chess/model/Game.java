@@ -1,35 +1,46 @@
 package wrap.lowleveldesign.chess.model;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 public class Game {
-    Board board;
-    Player playerA;
-    Player playerB;
-    Queue<Player> queue;
-    GameStatus gameStatus;
-    List<Move> moveHistory;
+    private Board board;
+    private Player playerA;
+    private Player playerB;
+    private List<Move> moveHistory;
 
     public void initializeGame(){
         this.board = new Board();
         playerA = new Player("A", Color.WHITE);
         playerB = new Player("B", Color.BLACK);
-        queue = new LinkedList<>();
-        queue.add(playerA);
-        queue.add(playerB);
         this.board.displayBoard();
+        moveHistory = new ArrayList<>();
         //this.startGame();
     }
     public void startGame(){
+        Scanner scanner = new Scanner(System.in);
         Player currentPlayer = playerA.color == Color.WHITE ? playerA : playerB;
+        while (board.getBoardStatus() == BoardStatus.IN_PLAY){
+            boolean isValidMove;
+            Move move;
+            System.out.println("Player "+currentPlayer.name +" enter your move!");
+            do {
+                String moveStr = scanner.nextLine();
+                String from = moveStr.substring(0,2);
+                String to = moveStr.substring(2,4);
+                move = new Move(currentPlayer, from, to, board.getCellbyName(from).getPiece());
+                // check if the move is valid
+                isValidMove = move.isValid(board);
+                System.out.println("move is valid: "+isValidMove);
+                if(!isValidMove)System.out.println("Player "+currentPlayer.name +" enter your move again!");
+            }while (!isValidMove);
 
-        // create a move which takes from & to and which piece to move
-        Move move = new Move(currentPlayer, "e2", "e4", board.getCellbyName("e2").piece);
-        // check if the move is valid
-        boolean isValidMove = move.isValid(board);
-        System.out.println("move is valid: "+isValidMove);
+            move.execute(board);
+            moveHistory.add(move);
+            board.displayBoard();
+
+            currentPlayer = (currentPlayer == playerA) ? playerB : playerA;
+        }
+        System.out.println("Game Result "+board.getBoardStatus());
     }
 
 }

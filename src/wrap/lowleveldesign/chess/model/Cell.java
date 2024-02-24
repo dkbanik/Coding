@@ -5,17 +5,13 @@ import wrap.lowleveldesign.chess.helper.CellHelper;
 import wrap.lowleveldesign.chess.model.piece.Piece;
 
 public class Cell {
-    public int x;
-    public int y;
-    public String name; // a1 ...h8
-    public Piece piece;
+    private int x;
+    private int y;
+    private String name; // a1 ...h8
+    private Piece piece;
 
-    public int getRow(){
-        return y;
-    }
-    public int getCol(){
-        return x;
-    }
+    public int getX(){return x;}
+    public int getY(){return y;}
 
     public Cell(int x, int y, Piece piece) {
         this.x = x;
@@ -28,5 +24,21 @@ public class Cell {
         this.x = x;
         this.y = y;
         this.name = CellHelper.convertToChessNotation(x,y);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Piece getPiece() {
+        return piece;
+    }
+
+    public void setPiece(Piece piece) {
+        this.piece = piece;
     }
 }
