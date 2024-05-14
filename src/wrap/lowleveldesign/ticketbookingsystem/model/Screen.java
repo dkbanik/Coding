@@ -4,21 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Screen {
-    private final int id;
     private final String name;
     private List<Show> shows;
     private final List<Seat> seats;
 
-    public Screen(int id, String name) {
-        this.id = id;
+    public Screen(String name) {
         this.name = name;
         this.shows = new ArrayList<>();
         this.seats = new ArrayList<>();
     }
 
-    public int getId() {
-        return id;
-    }
 
     public String getName() {
         return name;
@@ -34,5 +29,9 @@ public class Screen {
 
     public void addShow(Show show){
         this.shows.add(show);
+    }
+
+    public List<Show> getShows() {
+        return shows;
     }
 }

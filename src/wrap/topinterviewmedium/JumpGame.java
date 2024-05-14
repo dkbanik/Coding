@@ -1,5 +1,6 @@
 package wrap.topinterviewmedium;
 
+
 public class JumpGame {
     public static void main(String[] args) {
         int[] nums = {2,0};

@@ -22,7 +22,7 @@ Output: 1
 public class FindMinInSortedRotated {
     public static void main(String[] args) {
         int[] nums = {3,4,5,1,2}; // 3,4,1,2,3
-        int[] nums1 = {3,4,5,6,1,2,3};
+        int[] nums1 = {5,4,3,2,1};
         System.out.println(minimum(nums1));
     }
     public static int minimum(int[] nums){

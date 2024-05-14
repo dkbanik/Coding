@@ -14,7 +14,6 @@ public class Game {
         playerB = new Player("B", Color.BLACK);
         this.board.displayBoard();
         moveHistory = new ArrayList<>();
-        //this.startGame();
     }
     public void startGame(){
         Scanner scanner = new Scanner(System.in);

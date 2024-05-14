@@ -6,7 +6,7 @@ import java.util.Arrays;
 public class LongestIncreasingSubsequence {
     public static void main(String[] args) {
         int[] nums = {10,9,2,5,3,7,101,18};
-        System.out.println(lengthOfLIS(nums));
+        System.out.println(lengthOfLISV3(nums));
     }
 
     public static int lengthOfLIS(int[] nums) {
@@ -45,7 +45,7 @@ public class LongestIncreasingSubsequence {
         return low;
     }
 
-
+    //top down approach
     public static int lengthOfLISV2(int[] nums){
         int[] cache = new int[nums.length];
         int len = cache.length;
@@ -63,5 +63,22 @@ public class LongestIncreasingSubsequence {
             max = Integer.max(max, cache[i]);
         }
         return max;
+    }
+
+    //bottom up approach
+    public static int lengthOfLISV3(int[] nums){
+        int len = nums.length;
+        int[] maxLenNums = new int[len];
+        Arrays.fill(maxLenNums, 1);
+        int finalMax = Integer.MIN_VALUE;
+        for(int i=1;i<len;i++){
+            for(int j=0;j<i;j++){
+                if(nums[j] < nums[i]){
+                    maxLenNums[i] = Math.max(1+maxLenNums[j], maxLenNums[i]);
+                }
+            }
+            finalMax = Math.max(finalMax, maxLenNums[i]);
+        }
+        return finalMax;
     }
 }

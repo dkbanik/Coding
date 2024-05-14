@@ -1,21 +1,25 @@
 package wrap.lowleveldesign.ticketbookingsystem.model;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Theatre {
     private final int id;
     private final String name;
-    private final List<Screen> screens;
+    private List<Screen> screens;
+    private List<Show> shows;
+    private final String city;
 
-    public Theatre(int id, String name) {
+    public Theatre(int id, String name, String city) {
         this.id = id;
         this.name = name;
-        this.screens = new ArrayList<>();
+        this.city = city;
+    }
+    public void addScreens(List<Screen> screens) {
+        this.screens = screens;
     }
 
-    public int getId() {
-        return id;
+    public void addShows(List<Show> shows) {
+        this.shows = shows;
     }
 
     public String getName() {
@@ -24,5 +28,9 @@ public class Theatre {
 
     public List<Screen> getScreens() {
         return screens;
+    }
+
+    public String getCity() {
+        return city;
     }
 }

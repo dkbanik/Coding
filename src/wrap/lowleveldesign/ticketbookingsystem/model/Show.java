@@ -1,22 +1,16 @@
 package wrap.lowleveldesign.ticketbookingsystem.model;
 
 public class Show {
-    private final int id;
     private final String name;
     private final Movie movie;
-    private final Screen screen;
-    private final int duration;
+    private Long startTimestamp;
+    private Long endTimestamp;
 
-    public Show(int id, String name, Movie movie, Screen screen, int duration) {
-        this.id = id;
+    public Show(String name, Movie movie, Long startTimestamp, Long endTimestamp) {
         this.name = name;
         this.movie = movie;
-        this.screen = screen;
-        this.duration = duration;
-    }
-
-    public int getId() {
-        return id;
+        this.startTimestamp = startTimestamp;
+        this.endTimestamp = endTimestamp;
     }
 
     public String getName() {
@@ -25,9 +19,5 @@ public class Show {
 
     public Movie getMovie() {
         return movie;
-    }
-
-    public Screen getScreen() {
-        return screen;
     }
 }
