@@ -8,6 +8,33 @@ public class LongestIncreasingSubsequence {
         int[] arr = {0,8,4,12,2,10,6,14,1,9,5,13,3,11,7,15};
         int length = arr.length;
         lis(arr);
+        System.out.println(lis2(arr));
+    }
+    // memoization
+    // time -> 0(n*2) space -> o(n*2)
+    public static int lis2(int[] arr){
+        int len = arr.length;
+        int index = 0;
+        int prevIndex = -1;
+        int[][] dp = new int[len][len+1];
+        for(int i=0;i<len;i++){
+            Arrays.fill(dp[i], -1);
+        }
+        return lis2dp(index, prevIndex, arr, dp, len);
+    }
+
+    private static int lis2dp(int index, int prevIndex, int[] arr, int[][] dp, int n) {
+        if(index == n) return 0;
+
+        if(dp[index][prevIndex+1] != -1)return dp[index][prevIndex+1];
+        int notTakelen = 0 + lis2dp(index+1, prevIndex, arr, dp, n);
+        int takeLen = notTakelen;
+        if(prevIndex == -1 || arr[index] > arr[prevIndex]){
+            takeLen =  1 + lis2dp(index+1, index, arr, dp, n);
+        }
+        dp[index][prevIndex+1] = Math.max(takeLen, notTakelen);
+        return dp[index][prevIndex+1];
+
     }
 
     public static void lis(int[] arr){
@@ -25,6 +52,7 @@ public class LongestIncreasingSubsequence {
         }
         int ans = Arrays.stream(cache).max().getAsInt();
         System.out.println(ans);
+        // time - o(n^2) space - 0(n)
     }
 
     public static int lengthOfLIS(int[] nums) {

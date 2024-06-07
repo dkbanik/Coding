@@ -24,7 +24,7 @@ public class Stream2 {
         List<Integer> list = Arrays.asList(1,2,4,5,6,6);
 
         int sum = list.stream()
-                .mapToInt(value -> value).sum();
+                .mapToInt(Integer::intValue).sum();
         System.out.println(sum);
     }
 

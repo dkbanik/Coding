@@ -2,14 +2,15 @@ package wrap.java_concepts.interfaceandabstract;
 
 public abstract class Bird {
     String name;
-    Bird(){
-        System.out.println("bird created");
-    }
-    Bird(String bird){
-        this.name = bird;
+    Bird(String name){
+        this.name = name;
     }
 
     void makeSound(){
         System.out.println("Bird sound");
+    }
+
+    public String getName() {
+        return name;
     }
 }

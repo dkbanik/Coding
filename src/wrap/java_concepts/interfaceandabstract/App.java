@@ -10,9 +10,12 @@ public class App {
 
         System.out.println(dog.method2("ghi"));
 
-        Bird bird1 = new Pigeon();
-        Bird bird = new Bird("peacock"){};
+        Bird bird1 = new Pigeon("pigeon", true);
+        Bird bird3 = new Ostrich("ostrich", true);
+         Bird bird2 = new Bird("peacock"){};
 
-        bird.makeSound();
+        bird1.makeSound();
+        bird2.makeSound();
+        bird3.makeSound();
     }
 }

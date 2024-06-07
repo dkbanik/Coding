@@ -33,7 +33,9 @@ class CalculationCallable implements Callable<Integer> {
 
 public class CalculationCallableApp{
     public static void main(String[] args) {
+        // create workers
         ExecutorService executorService = Executors.newFixedThreadPool(3);
+        // id of all the tasks
         List<Integer> ids = Arrays.asList(2,4,14,6,8,10);
         List<Integer> results = process(executorService, ids);
         for(Integer response : results){
@@ -41,16 +43,22 @@ public class CalculationCallableApp{
         }
     }
 
+    // ES will execute each task and store in future
     private static List<Integer> process(ExecutorService executorService, List<Integer> ids) {
         List<Integer> result = new ArrayList<>();
         List<Future<Integer>> futures = new ArrayList<>();
+
+        // add the calculation of each task in the ES
+        // here 3 workers will work concurrently and add into the futures
+        // instead of running each task at a time, we are doing parallely
         for(Integer id: ids){
             Callable<Integer> task = new CalculationCallable(id);
             futures.add(executorService.submit(task));
         }
-
+        // once ES finishes all taks, it will shutdown
         executorService.shutdown();
 
+        // convert the futures into list
         for(Future<Integer> future : futures){
             try {
                 result.add(future.get());

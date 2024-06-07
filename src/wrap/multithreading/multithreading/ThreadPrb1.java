@@ -34,6 +34,7 @@ class ThreadPrinter implements Runnable{
 }
 public class ThreadPrb1 {
     public static void main(String[] args) {
+        // each thread shud print only 1 particular char of the string
         SharedString sharedString = new SharedString();
         Thread t1 = new Thread(new ThreadPrinter(0, sharedString));
         Thread t2 = new Thread(new ThreadPrinter(1, sharedString));

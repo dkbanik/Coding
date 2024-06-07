@@ -2,7 +2,7 @@ package wrap.dynamicprogramming;
 
 import java.util.ArrayList;
 import java.util.List;
-
+// https://leetcode.com/problems/generate-parentheses/description/
 public class GenerateValidParanthesis {
     public static void main(String[] args) {
         List<String> result = generateParenthesis(3);

@@ -31,6 +31,7 @@ public class LongestValidParanthesis {
     }
     // time - O(n) space - O(n)
     public static int longestValidParenthesesV2(String s) {
+        // ")(()))))()()())"
         int open = 0; int close = 0;
         int max = 0;
 

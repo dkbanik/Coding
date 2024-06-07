@@ -14,11 +14,11 @@ public class IntersectionArrays {
 
         List<Integer> list = new ArrayList<>();
 
-        int i=0;int j=0;int k=0;
+        int i=0;int j=0;
         while(i<len1 && j<len2){
             if(nums1[i] == nums2[j]){
                 list.add(nums1[i]);
-                k++;i++;j++;
+                i++;j++;
             }
             else if(nums1[i] > nums2[j]){
                 j++;

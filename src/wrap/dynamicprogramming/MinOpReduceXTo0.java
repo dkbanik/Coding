@@ -2,6 +2,7 @@ package wrap.dynamicprogramming;
 
 // https://leetcode.com/problems/minimum-operations-to-reduce-x-to-zero/
 // https://www.youtube.com/watch?v=3p2fBvxrVQA
+// https://www.youtube.com/watch?v=w7u9sMlx7zc
 public class MinOpReduceXTo0 {
     public static void main(String[] args) {
         int[] nums = {1,1,4,2,3};

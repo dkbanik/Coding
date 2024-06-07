@@ -39,6 +39,7 @@ public class SalesData {
                 ).sum();
         System.out.println("total revenue " +totalRevenue);
 
+        // Product with highest & lowest sales
         String product = sales.stream()
                               .sorted(Comparator.comparingDouble(record -> -record.getQuantity()*record.getPrice()))
                               .findFirst().get().getProduct();
@@ -50,6 +51,8 @@ public class SalesData {
 
         System.out.println("Product with highest sales "+product);
         System.out.println("Product with lowest sales "+product2);
+
+        // avg sales
         double avg = sales.stream()
                 .mapToDouble(record -> record.getPrice()).average().getAsDouble();
 
